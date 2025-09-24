@@ -1,0 +1,8 @@
+<h1>{% if post %}글 수정{% else %}글 작성{% endif %}</h1>
+<form method="post">
+    {% csrf_token %}
+    <p>제목: <input type="text" name="title" value="{{ post.title|default:'' }}"></p>
+    <p>내용: <textarea name="content">{{ post.content|default:'' }}</textarea></p>
+    <button type="submit">저장</button>
+</form>
+<a href="{% url 'post_list' %}">취소</a>
